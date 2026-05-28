@@ -13,6 +13,12 @@
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
 
         .topnav {
             display: flex;
@@ -89,10 +95,12 @@
 </head>
 
 <body id="body">
+    <div class = "heading-container">
     <h1>WELCOME TO JELLY M-USIC LOUNGE</h1>
 
     <!-- Dark Mode Toggle Button -->
     <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </div>
 
     <!-- NAVIGATION BAR -->
     <div class="topnav">
