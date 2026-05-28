@@ -7,19 +7,21 @@
     <title>MUSIC LOUNGE</title>
     <style>
         /* Default Light Mode Styles */
+        
         body {
             background-color: #ffffff;
             color: #333333;
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
+        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
         }
-
+        
         .topnav {
             display: flex;
             background-color: #333;
@@ -55,8 +57,8 @@
         .album-cover:hover {
             transform: scale(1.05);
         }
-
         /* Dark Mode Toggle Button Styles */
+        
         .dark-mode-btn {
             background-color: #333;
             color: white;
@@ -64,30 +66,29 @@
             padding: 10px 20px;
             cursor: pointer;
             font-size: 16px;
-            margin: 10px;
             border-radius: 5px;
         }
-
         /* Dark Mode Styles */
+        
         body.dark-mode {
             background-color: #121212;
             color: #ffffff;
         }
-
+        
         body.dark-mode .topnav {
             background-color: #1f1f1f;
         }
-
+        
         body.dark-mode .topnav a:hover {
             background-color: #555;
             color: white;
         }
-
+        
         body.dark-mode .dark-mode-btn {
             background-color: #ffffff;
             color: #333333;
         }
-
+        
         body.dark-mode hr {
             border-color: #555;
         }
@@ -95,11 +96,10 @@
 </head>
 
 <body id="body">
-    <div class = "heading-container">
-    <h1>WELCOME TO JELLY M-USIC LOUNGE</h1>
-
-    <!-- Dark Mode Toggle Button -->
-    <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <!-- Header Container: Heading on left, Button on right -->
+    <div class="header-container">
+        <h1>WELCOME TO JELLY M-USIC LOUNGE</h1>
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
     </div>
 
     <!-- NAVIGATION BAR -->
@@ -160,7 +160,7 @@
 
         function stopPreview(audioId) {
             var audio = document.getElementById(audioId);
-            
+
             if (stopTimer) {
                 clearTimeout(stopTimer);
             }
@@ -175,9 +175,9 @@
         function toggleDarkMode() {
             var body = document.getElementById("body");
             var btn = document.querySelector(".dark-mode-btn");
-            
+
             body.classList.toggle("dark-mode");
-            
+
             // Change button text based on current mode
             if (body.classList.contains("dark-mode")) {
                 btn.textContent = "☀️ Light Mode";
