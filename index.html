@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUSIC LOUNGE</title>
     <style>
+        /* Default Light Mode Styles */
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
         .topnav {
             display: flex;
             background-color: #333;
@@ -32,7 +40,6 @@
             margin-left: auto;
             font-size: 17px;
         }
-        /* Optional: Add a cursor hint that these images are interactive */
         
         .album-cover {
             cursor: pointer;
@@ -41,13 +48,51 @@
         
         .album-cover:hover {
             transform: scale(1.05);
-            /* Slight zoom effect on hover */
+        }
+
+        /* Dark Mode Toggle Button Styles */
+        .dark-mode-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark-mode .topnav {
+            background-color: #1f1f1f;
+        }
+
+        body.dark-mode .topnav a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        body.dark-mode .dark-mode-btn {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        body.dark-mode hr {
+            border-color: #555;
         }
     </style>
 </head>
 
-<body>
+<body id="body">
     <h1>WELCOME TO JELLY M-USIC LOUNGE</h1>
+
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
     <!-- NAVIGATION BAR -->
     <div class="topnav">
@@ -62,52 +107,44 @@
 
     <hr>
 
-    <!-- 
-      We add onmouseenter and onmouseleave events directly to the images.
-      This calls the JavaScript functions to play/stop specific songs.
-    -->
-
     <!-- Song 1: Everything Has Changed -->
     <a href="every.html">
         <img src="ever.jpg" alt="everything has changed dp" width="200px" class="album-cover" onmouseenter="playPreview('audio1')" onmouseleave="stopPreview('audio1')">
     </a>
 
-    <!-- Song 2: You (Assuming filename) -->
+    <!-- Song 2: You -->
     <a href="you.html">
         <img src="you.jpg" alt="you dp" width="200px" class="album-cover" onmouseenter="playPreview('audio2')" onmouseleave="stopPreview('audio2')">
     </a>
 
-    <!-- Song 3: Bawat (Assuming filename) -->
+    <!-- Song 3: Bawat -->
     <a href="bwt.html">
         <img src="bawat.jpg" alt="you dp" width="200px" class="album-cover" onmouseenter="playPreview('audio3')" onmouseleave="stopPreview('audio3')">
     </a>
 
     <!-- HIDDEN AUDIO ELEMENTS -->
-    <!-- Replace 'src' with your actual music file paths -->
     <audio id="audio1" src="Taylor Swift - Everything Has Changed ft. Ed Sheeran.mp3"></audio>
     <audio id="audio2" src="Lloyd - You (Official Music Video) ft. Lil Wayne [YVLHaqeJzEk].mp3"></audio>
     <audio id="audio3" src="Munimuni - Bawat Piyesa (Official Lyric Video) [0E8B6yl4I5I].mp3"></audio>
 
     <!-- JAVASCRIPT LOGIC WITH TIMER -->
     <script>
-        // Variable to store the timer ID so we can cancel it if the mouse leaves early
         var stopTimer;
 
         function playPreview(audioId) {
             var audio = document.getElementById(audioId);
             if (audio) {
-                // 1. Reset to start and play
                 audio.currentTime = 0;
                 audio.play().catch(function(error) {
                     console.log("Playback prevented. Click page first.");
                 });
 
-                // 2. Set a timer to stop the audio after 5 seconds (5000 milliseconds)
+                // 5 seconds timer
                 stopTimer = setTimeout(function() {
                     var audio = document.getElementById(audioId);
                     if (audio) {
                         audio.pause();
-                        audio.currentTime = 0; // Reset to start after stopping
+                        audio.currentTime = 0;
                     }
                 }, 5000);
             }
@@ -115,16 +152,29 @@
 
         function stopPreview(audioId) {
             var audio = document.getElementById(audioId);
-
-            // 1. Clear the timer immediately if mouse leaves before 5 seconds
+            
             if (stopTimer) {
                 clearTimeout(stopTimer);
             }
 
-            // 2. Pause the audio
             if (audio) {
                 audio.pause();
                 audio.currentTime = 0;
+            }
+        }
+
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            var body = document.getElementById("body");
+            var btn = document.querySelector(".dark-mode-btn");
+            
+            body.classList.toggle("dark-mode");
+            
+            // Change button text based on current mode
+            if (body.classList.contains("dark-mode")) {
+                btn.textContent = "☀️ Light Mode";
+            } else {
+                btn.textContent = "🌙 Dark Mode";
             }
         }
     </script>
