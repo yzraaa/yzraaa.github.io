@@ -42,11 +42,22 @@
             color: black;
         }
         
-        .topnav input {
+        .search-container {
+            flex: 1;
+            /* Takes up remaining space */
+            display: flex;
+            justify-content: center;
+            /* Centers the search bar */
+            padding: 7px;
+        }
+        
+        .search-container input {
             padding: 7px;
             border: none;
-            margin-left: auto;
             font-size: 17px;
+            width: 300px;
+            /* Set a fixed width */
+            text-align: center;
         }
         
         .album-cover {
@@ -98,20 +109,26 @@
 <body id="body">
     <!-- Header Container: Heading on left, Button on right -->
     <div class="header-container">
-        <h1>JELLY M-USIC LOUNGE</h1>
-        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        <img src="logo.png" width="2000px" height="400px">
+
     </div>
 
     <!-- NAVIGATION BAR -->
     <div class="topnav">
+
+
         <a class="active" href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <div class="search-container">
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" name="q" placeholder="Search for lyrics...">
+            </form>
+        </div>
 
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <input type="text" name="q" placeholder="Search for lyrics...">
-        </form>
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
     </div>
+
 
     <hr>
 
