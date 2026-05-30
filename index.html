@@ -5,105 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MUSIC LOUNGE</title>
-    <style>
-        /* Default Light Mode Styles */
-        
-        body {
-            background-color: #ffffff;
-            color: #333333;
-            font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-        
-        .topnav {
-            display: flex;
-            background-color: #333;
-            overflow: hidden;
-            align-items: center;
-        }
-        
-        .topnav a {
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-        
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        
-        .search-container {
-            flex: 1;
-            /* Takes up remaining space */
-            display: flex;
-            justify-content: center;
-            /* Centers the search bar */
-            padding: 7px;
-        }
-        
-        .search-container input {
-            padding: 7px;
-            border: none;
-            font-size: 17px;
-            width: 300px;
-            /* Set a fixed width */
-            text-align: center;
-        }
-        
-        .album-cover {
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .album-cover:hover {
-            transform: scale(1.05);
-        }
-        /* Dark Mode Toggle Button Styles */
-        
-        .dark-mode-btn {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        /* Dark Mode Styles */
-        
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        
-        body.dark-mode .topnav {
-            background-color: #1f1f1f;
-        }
-        
-        body.dark-mode .topnav a:hover {
-            background-color: #555;
-            color: white;
-        }
-        
-        body.dark-mode .dark-mode-btn {
-            background-color: #ffffff;
-            color: #333333;
-        }
-        
-        body.dark-mode hr {
-            border-color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body id="body">
@@ -125,8 +27,7 @@
                 <input type="text" name="q" placeholder="Search for lyrics...">
             </form>
         </div>
-
-        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+        
     </div>
 
 
@@ -134,80 +35,24 @@
 
     <!-- Song 1: Everything Has Changed -->
     <a href="every.html">
-        <img src="ever.jpg" alt="everything has changed dp" width="200px" class="album-cover" onmouseenter="playPreview('audio1')" onmouseleave="stopPreview('audio1')">
+        <img src="ever.jpg" alt="everything has changed dp" width="200px" class="album-cover">
     </a>
 
     <!-- Song 2: You -->
     <a href="you.html">
-        <img src="you.jpg" alt="you dp" width="200px" class="album-cover" onmouseenter="playPreview('audio2')" onmouseleave="stopPreview('audio2')">
+        <img src="you.jpg" alt="you dp" width="200px" class="album-cover">
     </a>
 
     <!-- Song 3: Bawat -->
     <a href="bwt.html">
-        <img src="bawat.jpg" alt="you dp" width="200px" class="album-cover" onmouseenter="playPreview('audio3')" onmouseleave="stopPreview('audio3')">
+        <img src="bawat.jpg" alt="you dp" width="200px" class="album-cover">
     </a>
 
     <a href="home.html">
-        <img src="home.png" alt="home dp" width="200px" class="album-cover" onmouseenter="playPreview('audio4')" onmouseleave="stopPreview('audio4')">
+        <img src="home.png" alt="home dp" width="200px" class="album-cover">
     </a>
 
-    <!-- HIDDEN AUDIO ELEMENTS -->
-    <audio id="audio1" src="Taylor Swift - Everything Has Changed ft. Ed Sheeran.mp3"></audio>
-    <audio id="audio2" src="Lloyd - You (Official Music Video) ft. Lil Wayne [YVLHaqeJzEk].mp3"></audio>
-    <audio id="audio3" src="Munimuni - Bawat Piyesa (Official Lyric Video) [0E8B6yl4I5I].mp3"></audio>
-    <audio id="audio4" src="Daughtry - Home (Official Video).mp3"></audio>
 
-    <!-- JAVASCRIPT LOGIC WITH TIMER -->
-    <script>
-        var stopTimer;
-
-        function playPreview(audioId) {
-            var audio = document.getElementById(audioId);
-            if (audio) {
-                audio.currentTime = 0;
-                audio.play().catch(function(error) {
-                    console.log("Playback prevented. Click page first.");
-                });
-
-                // 5 seconds timer
-                stopTimer = setTimeout(function() {
-                    var audio = document.getElementById(audioId);
-                    if (audio) {
-                        audio.pause();
-                        audio.currentTime = 0;
-                    }
-                }, 5000);
-            }
-        }
-
-        function stopPreview(audioId) {
-            var audio = document.getElementById(audioId);
-
-            if (stopTimer) {
-                clearTimeout(stopTimer);
-            }
-
-            if (audio) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        }
-
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            var body = document.getElementById("body");
-            var btn = document.querySelector(".dark-mode-btn");
-
-            body.classList.toggle("dark-mode");
-
-            // Change button text based on current mode
-            if (body.classList.contains("dark-mode")) {
-                btn.textContent = "☀️ Light Mode";
-            } else {
-                btn.textContent = "🌙 Dark Mode";
-            }
-        }
-    </script>
 </body>
 
 </html>
