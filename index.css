@@ -1,0 +1,120 @@
+/* Hide the checkbox */
+
+#dark-mode-toggle {
+    display: none;
+}
+
+
+/* CSS Variables for Light Mode (default) */
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --nav-bg: #333333;
+    --nav-text: #f2f2f2;
+    --nav-hover-bg: #ddd;
+    --nav-hover-text: black;
+    --btn-bg: #333333;
+    --btn-text: #ffffff;
+    --hr-color: #ccc;
+}
+
+
+/* Default Styles */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.topnav {
+    display: flex;
+    background-color: var(--nav-bg);
+    overflow: hidden;
+    align-items: center;
+}
+
+.topnav a {
+    color: var(--nav-text);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: var(--nav-hover-bg);
+    color: var(--nav-hover-text);
+}
+
+.search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+}
+
+.search-container input {
+    padding: 7px;
+    border: none;
+    font-size: 17px;
+    width: 300px;
+    text-align: center;
+}
+
+.album-cover {
+    cursor: pointer;
+}
+
+.dark-mode-btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+hr {
+    border-color: var(--hr-color);
+}
+
+
+/* Change button text using ::after */
+
+.dark-mode-btn::after {
+    content: " 🌙 Dark Mode";
+}
+
+
+/* Dark Mode Styles - When checkbox is checked */
+
+#dark-mode-toggle:checked~body {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --nav-bg: #1f1f1f;
+    --nav-text: #f2f2f2;
+    --nav-hover-bg: #555;
+    --nav-hover-text: #ffffff;
+    --btn-bg: #ffffff;
+    --btn-text: #333333;
+    --hr-color: #555;
+}
+
+
+/* Change button text when dark mode is active */
+
+#dark-mode-toggle:checked~body .dark-mode-btn::after {
+    content: " ☀️ Light Mode";
+}
